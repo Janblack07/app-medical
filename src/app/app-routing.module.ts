@@ -5,14 +5,40 @@ const routes: Routes = [
 
   {
     path: '',
-    loadChildren: () => import('./public/public.module').then( m => m.PublicPageModule)
+    loadChildren: () => import('./landing/landing.module').then( m => m.LandingPageModule)
   },
-
   {
-    path: 'home',
-    loadChildren: () => import('./private/private.module').then( m => m.PrivatePageModule)
+    path: 'login',
+    loadChildren: () => import('./auth/login/login.module').then( m => m.LoginPageModule)
   },
-
+  {
+    path: 'register',
+    loadChildren: () => import('./auth/register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'resetpassword',
+    loadChildren: () => import('./auth/resetpassword/resetpassword.module').then( m => m.ResetpasswordPageModule)
+  },
+  {
+    path: 'verification',
+    loadChildren: () => import('./auth/verification/verification.module').then( m => m.VerificationPageModule)
+  },
+  {
+    path: 'patient/home',
+    loadChildren: () => import('./paciente/home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'patient/profile',
+    loadChildren: () => import('./paciente/profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'doctor/home',
+    loadChildren: () => import('./doctor/home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'doctor/profile',
+    loadChildren: () => import('./doctor/profile/profile.module').then( m => m.ProfilePageModule)
+  },
 
 ];
 
