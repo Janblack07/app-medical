@@ -1,9 +1,17 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>home</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <h1 class="text-center">Soy un Doctor</h1>
+  <ion-list>
+    <ion-item>
+      <ion-textarea labelPlacement="floating" class="sin-borde custom" value="Lorem Ipsum">
+        <div slot="label">Comments <ion-text color="danger">(Required)</ion-text></div>
+      </ion-textarea>
+    </ion-item>
+  </ion-list>
+
+  <ion-textarea class="custom"
+  placeholder="Enter text, leave the textarea, come back, and type to clear"
+  [clearOnEdit]="true"
+></ion-textarea>
+
+<ion-input class="mt-6" label="Outline input" label-placement="floating" placeholder="Enter text"></ion-input>
+
 </ion-content>
