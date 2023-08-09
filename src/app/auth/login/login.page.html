@@ -5,22 +5,42 @@
 
     <div class="mt-5 px-5 py-5 mx-5 bg-white bg-opacity-10 rounded-xl">
 
-      <form class="flex-grow items-center font-medium text-base">
+      <form [formGroup]="formLogin" (submit)="Login(formLogin.value)" class="flex-grow items-center font-medium text-base">
 
         <p class="font-semibold text-2xl">Unierse ahora</p>
 
         <div class="relative mt-5 flex items-center rounded-lg border-2 border-solid border-gray-600 hover:border-[#28A061] transition-all duration-500">
           <ion-icon class="absolute flex pl-3 text-gray-600 w-5 h-5" name="mail-outline"></ion-icon>
-          <input type="text" autofocus placeholder="Ingrese correo"
+          <input type="email" autofocus placeholder="Ingrese correo" formControlName="email"
             class="out-input py-2.5 w-full outline-none placeholder:font-medium placeholder:text-base bg-transparent pl-10">
-        </div>
 
+          </div>
+          <div
+          *ngIf="formLogin.get('email')?.invalid && formLogin.get('email')?.touched">
+          <span *ngIf="formLogin.get('email')?.hasError('required')"
+          style="color: red;"> Correo Electrónico Requerido.</span>
+          </div>
+          <div  *ngIf="formLogin.get('email')?.hasError('email')" style="color: red;">
+            Se requiere un correo valido.
+        </div>
         <div class="relative mt-7 flex items-center rounded-lg border-2 border-solid border-gray-600 hover:border-[#28A061] transition-all duration-500">
           <ion-icon class="absolute flex pl-3 text-gray-600 w-5 h-5" name="lock-closed-outline"></ion-icon>
-          <input type="text" placeholder="Ingrese contraseña"
+          <input type="password" placeholder="Ingrese contraseña" formControlName="password"
             class="out-input py-2.5 w-full outline-none placeholder:font-medium placeholder:text-base bg-transparent pl-10">
-        </div>
 
+          </div>
+          <div  *ngIf="formLogin.get('password')?.invalid && formLogin.get('password')?.touched">
+            <span *ngIf="formLogin.get('password')?.hasError('required')" style="color: red;"> Contraseña Requerido.</span>
+         </div>
+          <!-- Validación en caso que el usuario ingrese menor de 5 caracteres -->
+        <div  *ngIf="formLogin.get('password')?.hasError('minlength')" style="color: red;">
+        Nesecitas 5 Caracteres como Mínimo.
+        </div>
+        <!-- Validación en caso que el usuario ingreso mayor a 10 de caracteres -->
+         <div
+        *ngIf="formLogin.get('password')?.hasError('maxlength')" style="color: red;">
+        10 Caracteres como Máximo.
+        </div>
         <div class="flex justify-between mt-7">
           <label for="remember" class="flex items-center gap-x-1.5">
             <input type="checkbox" id="remember" class="w-5 h-5 rounded-md border-gray-600 border-solid focus:bg-indigo-600 bg-gray-300">
@@ -32,9 +52,9 @@
             </button>
           </span>
         </div>
-    
-        <button type="button" class="py-2.5 w-full mt-5 text-base font-semibold rounded-lg bg-[#28A061] hover:bg-green-700 transition-all duration-700">
-          Iniciar seción
+
+        <button type="submit" class="py-2.5 w-full mt-5 text-base font-semibold rounded-lg bg-[#28A061] hover:bg-green-700 transition-all duration-700">
+          Iniciar sesión
         </button>
       </form>
 
