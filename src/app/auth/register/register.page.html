@@ -1,24 +1,28 @@
-<ion-content [fullscreen]="true">
-  <div class="bg-gray-400 h-full">
+<ion-content color="medium" [fullscreen]="true">
+  <div>
     <img src="../../../assets/wave.svg" alt="wave">
-    <p class="text-3xl font-bold text-center">MediBook</p>
+    
+    <div class="flex items-center justify-center gap-x-1.5 mb-7">
+      <img class="w-16 h-16 p-2.5 rounded-lg bg-[#242424]" src="../../assets/logo-app.png" alt="logo-app">
+      <p class="text-4xl font-bold">MediBook</p>
+    </div>
 
     <div class="mt-5 px-5 py-5 mx-5 bg-white bg-opacity-10 rounded-xl">
 
-      <form class="flex-grow items-center font-medium text-base mt-7">
+      <form class="flex-grow items-center font-medium text-base">
 
         <p class="font-semibold text-2xl">Resgitrarse</p>
 
         <div class="relative mt-5 flex items-center rounded-lg border-2 border-solid border-gray-600 hover:border-[#28A061] transition-all duration-500">
           <ion-icon class="absolute flex pl-3 text-gray-600 w-5 h-5" name="mail-outline"></ion-icon>
           <input type="text" autofocus placeholder="Ingrese correo"
-            class="out-input py-2.5 w-full outline-none placeholder:font-medium placeholder:text-base bg-transparent pl-10">
+            class="out-input py-2.5 w-full outline-none placeholder:text-slate-200 placeholder:font-medium placeholder:text-base bg-transparent pl-10">
         </div>
 
         <div class="relative mt-7 flex items-center rounded-lg border-2 border-solid border-gray-600 hover:border-[#28A061] transition-all duration-500">
           <ion-icon class="absolute flex pl-3 text-gray-600 w-5 h-5" name="lock-closed-outline"></ion-icon>
           <input type="text" placeholder="Ingrese contraseña"
-            class="out-input py-2.5 w-full outline-none placeholder:font-medium placeholder:text-base bg-transparent pl-10">
+            class="out-input py-2.5 w-full outline-none placeholder:text-slate-200 placeholder:font-medium placeholder:text-base bg-transparent pl-10">
         </div>
 
         <label for="remember" class="flex items-center gap-x-1.5 mt-7">
@@ -38,7 +42,7 @@
         </button>
       </div>
      
-      <button (click)="loginAccount()" type="button" class="text-center w-full mt-5">
+      <button [routerLink]="['/login']" routerLinkActive="router-link-active"  type="button" class="text-center w-full mt-5">
         Ya tienes cuenta
       </button>
     </div>

@@ -8,7 +8,9 @@ import { AuthService } from 'src/app/Service/auth.service';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
+
 export class LoginPage implements OnInit {
+
   formLogin!:FormGroup
   constructor(private  router: Router,private  authService: AuthService,
     private formBuilder: FormBuilder) {
@@ -18,17 +20,7 @@ export class LoginPage implements OnInit {
       })
     }
 
-  ngOnInit(): void {
-  }
-
-  createAccount() {
-    this.router.navigateByUrl("/register");
-  }
-
-  resetPassword() {
-    this.router.navigateByUrl("/resetpassword");
-  }
-
+  ngOnInit(): void {}
 
   Login(form: any) {
     if (this.formLogin.invalid) {
@@ -44,5 +36,6 @@ export class LoginPage implements OnInit {
       });
     }
   }
+  
 
 }

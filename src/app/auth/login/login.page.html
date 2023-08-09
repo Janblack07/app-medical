@@ -1,7 +1,11 @@
-<ion-content [fullscreen]="true">
-  <div class="bg-gray-400 h-full">
+<ion-content color="medium" [fullscreen]="true">
+  <div>
     <img src="../../../assets/wave.svg" alt="wave">
-    <p class="text-3xl font-bold text-center mb-7">MediBook</p>
+
+    <div class="flex items-center justify-center gap-x-1.5 mb-7">
+      <img class="w-16 h-16 p-2.5 rounded-lg bg-[#242424]" src="../../assets/logo-app.png" alt="logo-app">
+      <p class="text-4xl font-bold">MediBook</p>
+    </div>
 
     <div class="mt-5 px-5 py-5 mx-5 bg-white bg-opacity-10 rounded-xl">
 
@@ -12,42 +16,49 @@
         <div class="relative mt-5 flex items-center rounded-lg border-2 border-solid border-gray-600 hover:border-[#28A061] transition-all duration-500">
           <ion-icon class="absolute flex pl-3 text-gray-600 w-5 h-5" name="mail-outline"></ion-icon>
           <input type="email" autofocus placeholder="Ingrese correo" formControlName="email"
-            class="out-input py-2.5 w-full outline-none placeholder:font-medium placeholder:text-base bg-transparent pl-10">
-
-          </div>
-          <div
-          *ngIf="formLogin.get('email')?.invalid && formLogin.get('email')?.touched">
-          <span *ngIf="formLogin.get('email')?.hasError('required')"
-          style="color: red;"> Correo Electrónico Requerido.</span>
-          </div>
-          <div  *ngIf="formLogin.get('email')?.hasError('email')" style="color: red;">
-            Se requiere un correo valido.
+            class="out-input py-2.5 w-full outline-none placeholder:text-slate-200 placeholder:font-medium placeholder:text-base bg-transparent pl-10">
         </div>
-        <div class="relative mt-7 flex items-center rounded-lg border-2 border-solid border-gray-600 hover:border-[#28A061] transition-all duration-500">
+
+        <div class="mt-1" *ngIf="formLogin.get('email')?.invalid && formLogin.get('email')?.touched">
+          <span class="text-red-700" *ngIf="formLogin.get('email')?.hasError('required')"> 
+            Correo requerido
+          </span>
+        </div>
+
+        <div class="text-red-700 mt-1" *ngIf="formLogin.get('email')?.hasError('email')">
+            Correo invalido
+        </div>
+
+        <div class="relative mt-5 flex items-center rounded-lg border-2 border-solid border-gray-600 hover:border-[#28A061] transition-all duration-500">
           <ion-icon class="absolute flex pl-3 text-gray-600 w-5 h-5" name="lock-closed-outline"></ion-icon>
           <input type="password" placeholder="Ingrese contraseña" formControlName="password"
-            class="out-input py-2.5 w-full outline-none placeholder:font-medium placeholder:text-base bg-transparent pl-10">
+            class="out-input py-2.5 w-full outline-none placeholder:text-slate-200 placeholder:font-medium placeholder:text-base bg-transparent pl-10">
+        </div>
 
-          </div>
-          <div  *ngIf="formLogin.get('password')?.invalid && formLogin.get('password')?.touched">
-            <span *ngIf="formLogin.get('password')?.hasError('required')" style="color: red;"> Contraseña Requerido.</span>
-         </div>
+        <div class="mt-1" *ngIf="formLogin.get('password')?.invalid && formLogin.get('password')?.touched">
+          <span *ngIf="formLogin.get('password')?.hasError('required')" class="text-red-700"> 
+            Contraseña requerida
+          </span>
+        </div>
+
           <!-- Validación en caso que el usuario ingrese menor de 5 caracteres -->
-        <div  *ngIf="formLogin.get('password')?.hasError('minlength')" style="color: red;">
-        Nesecitas 5 Caracteres como Mínimo.
+        <div class="mt-1 text-red-700" *ngIf="formLogin.get('password')?.hasError('minlength')">
+          5 caracteres mínimo
         </div>
+
         <!-- Validación en caso que el usuario ingreso mayor a 10 de caracteres -->
-         <div
-        *ngIf="formLogin.get('password')?.hasError('maxlength')" style="color: red;">
-        10 Caracteres como Máximo.
+        <div *ngIf="formLogin.get('password')?.hasError('maxlength')" class="text-red-700 mt-1">
+          10 caracteres máximo
         </div>
+
         <div class="flex justify-between mt-7">
           <label for="remember" class="flex items-center gap-x-1.5">
             <input type="checkbox" id="remember" class="w-5 h-5 rounded-md border-gray-600 border-solid focus:bg-indigo-600 bg-gray-300">
             Mantener seción
           </label>
+
           <span>
-            <button (click)="resetPassword()" type="button" class="text-indigo-600">
+            <button [routerLink]="['/resetpassword']" routerLinkActive="router-link-active"  type="button" class="text-indigo-900">
               Olvido su contraseña
             </button>
           </span>
@@ -65,7 +76,7 @@
         </button>
       </div>
 
-      <button (click)="createAccount()" type="button" class="text-center w-full mt-5">
+      <button [routerLink]="['/register']" routerLinkActive="router-link-active"  type="button" class="text-center w-full mt-5">
         No tienes cuenta
       </button>
     </div>
