@@ -7,7 +7,7 @@
       <p class="text-4xl font-bold">MediBook</p>
     </div>
 
-    <div class="mt-5 px-5 py-5 mx-5 bg-white bg-opacity-10 rounded-xl">
+    <div class="mt-5 px-5 py-5 mx-5 shadow-lg bg-white bg-opacity-10 rounded-xl">
 
       <form [formGroup]="formLogin" (submit)="Login(formLogin.value)" class="flex-grow items-center font-medium text-base">
 
@@ -51,7 +51,7 @@
           10 caracteres máximo
         </div>
 
-        <div class="flex justify-between mt-7">
+        <div class="flex justify-between mt-5">
           <label for="remember" class="flex items-center gap-x-1.5">
             <input type="checkbox" id="remember" class="w-5 h-5 rounded-md border-gray-600 border-solid focus:bg-indigo-600 bg-gray-300">
             Mantener seción

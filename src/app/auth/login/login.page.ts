@@ -12,7 +12,8 @@ import { AuthService } from 'src/app/Service/auth.service';
 export class LoginPage implements OnInit {
 
   formLogin!:FormGroup
-  constructor(private  router: Router,private  authService: AuthService,
+
+  constructor(private router: Router, private authService: AuthService,
     private formBuilder: FormBuilder) {
       this.formLogin= this.formBuilder.group({
         email:['',[Validators.required,Validators.email]],
