@@ -125,7 +125,7 @@
         <!-- Validación en caso se ingrese caracteres letras o otro caracter raro/ en caso sea menor que 10 -->
 
         <div class="mt-1 text-red-700" *ngIf="formRegister.get('telefono')?.hasError('pattern')">
-          <ion-label class="telefono_label" color="primary">Telefóno Requiere : <br> 10 Caracteres Númericos <br> Soló se Permite Números</ion-label>
+          <ion-label class="validacion-text" color="primary">Telefóno Requiere : <br> 10 Caracteres Númericos <br> Soló se Permite Números</ion-label>
         </div>
 
 
@@ -142,12 +142,6 @@
             Campo Requerido
           </span>
         </div>
-
-                <!-- Validación en caso se ingrese caracteres letras o otro caracter raro/ en caso sea menor que 10 o mayor que 10 -->
-
-                <div class="mt-1 text-red-700" *ngIf="formRegister.get('telefono')?.hasError('pattern')">
-                  <ion-label class="validacion-text" color="primary">Telefóno Requiere : <br> 10 Caracteres Númericos <br> Soló se Permite Números</ion-label>
-                </div>
         
         
                 <!-- Input de cedula -->
@@ -191,7 +185,7 @@
 
                 <!-- Validación de input de provincia en caso este sea menor o igual que 3 -->
 
-                <div class="mt-1 text-red-700" *ngIf="formRegister.get('canton')?.hasError('minlength')">
+                <div class="mt-1 text-red-700" *ngIf="formRegister.get('provincia')?.hasError('minlength')">
                     3 Caracteres Mínimo
                 </div>
 
@@ -219,7 +213,7 @@
                   3 Caracteres Mínimo
               </div>
     
-        <button  type="submit" class="py-2.5 w-full mt-5 text-base font-semibold rounded-lg bg-[#28A061]  hover:bg-green-700 transition-all duration-700">
+        <button type="submit" class="py-2.5 w-full mt-5 text-base font-semibold rounded-lg bg-[#28A061]  hover:bg-green-700 transition-all duration-700">
           Registrarse
         </button>
       </form>

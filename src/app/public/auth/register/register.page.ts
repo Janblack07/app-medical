@@ -14,8 +14,11 @@ export class RegisterPage implements OnInit {
 
   formRegister!:FormGroup
 
+  // Todas las provincias
+
   provincias_array = ['Azuay','Bolívar','Cañar','Carchi','Chimborazo','Cotopaxi','El Oro','Esmeraldas','Galápagos','Guayas','Imbabura','Loja','Los Ríos','Manabí','M. Santiago','Napo','Orellana','Pastaza','Pichincha','Santa Elena','S.D. de los Tsáchilas','Sucumbios','Tungurahua','Zamora Chinchipe']
 
+  // Cantones solo de manabí porque ahi que pensar si se usa un servicio o otra idea.
   cantonArray = [
     'Cantón Portoviejo','Cantón 24 de Mayo','Cantón Bolívar','Cantón Chone','Cantón El Carmen',
     'Cantón Flavio Alfaro','Cantón Jama','Cantón Jaramijó','Cantón Jipijapa','Cantón Junín',
@@ -34,8 +37,8 @@ export class RegisterPage implements OnInit {
       telefono: ['', [Validators.required, Validators.pattern("^[0-9]{10}$")]],
       fecha: ['',Validators.required],
       ci: ['',[Validators.required, Validators.pattern("^[0-9]{10}$")]],
-      canton: ['',Validators.required],
-      'provincia' : ['',Validators.required]
+      canton: ['',[Validators.required, Validators.minLength(3)]],
+      'provincia' : ['',[Validators.required, Validators.minLength(3)]]
     })
   }
 
@@ -57,7 +60,7 @@ export class RegisterPage implements OnInit {
     }
   }
 
-  // Método solo para mostrar los datos por la consola
+  // Método solo para mostrar los datos por la consola para saber que los datos se estan enviados correctamente despues borrar este metodo quien le toque empatar
 
   register(Form:any){
     console.log(this.formRegister.value);
