@@ -1,0 +1,31 @@
+<ion-menu contentId="main-content">
+  <app-sidebar-component />
+</ion-menu>
+
+<nav class="w-full flex justify-between items-center px-5 h-16">
+
+  <div class="float-left">
+    <button class="ion-page" id="main-content" slot="start">
+      <ion-menu-button></ion-menu-button>
+    </button>
+  </div>
+  
+  <div class="flex items-center gap-x-1.5">
+    <img class="w-10 h-10" src="../../../../assets//logo-app.png" alt="">
+    <p class="text-xl font-bold">MediBook</p>
+  </div>
+
+  <div class="flex gap-x-2.5 items-center justify-center">
+    <button type="button">
+      <ion-icon class="w-6 h-6" name="search-outline"></ion-icon>
+    </button>
+
+    <button type="button">
+      <ion-icon class="w-6 h-6" name="notifications-outline"></ion-icon>
+    </button>
+
+    <button type="button" [routerLink]="['/patient/profile']" routerLinkActive="router-link-active">
+      <ion-icon class="w-11 h-11" name="person-circle-outline"></ion-icon>
+    </button>
+  </div>
+</nav>
