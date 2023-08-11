@@ -10,6 +10,7 @@ import { NavbarComponent } from '../private/components/navbar/navbar.component';
 import { ChangePasswordComponent } from '../private/components/change-password/change-password.component';
 import { SidebarComponent } from '../private/components/sidebar/sidebar.component';
 import { FormularioCreateComponent } from '../private/components/antecendetes/formulario-create/formulario-create.component';
+import { FormularioCreateComponentVacuna } from '../private/components/vacuna/formulario-create/formulario-create.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { FormularioCreateComponent } from '../private/components/antecendetes/fo
     NavbarComponent,
     ChangePasswordComponent,
     SidebarComponent,
-    FormularioCreateComponent
+    FormularioCreateComponent,
+    FormularioCreateComponentVacuna
   ],
 
   declarations: [
@@ -35,7 +37,8 @@ import { FormularioCreateComponent } from '../private/components/antecendetes/fo
     NavbarComponent,
     ChangePasswordComponent,
     SidebarComponent,
-    FormularioCreateComponent
+    FormularioCreateComponent,
+    FormularioCreateComponentVacuna
   ],
 
 })

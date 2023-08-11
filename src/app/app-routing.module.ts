@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { FormularioCreateComponent } from './private/components/antecendetes/formulario-create/formulario-create.component';
+import { FormularioCreateComponentVacuna } from './private/components/vacuna/formulario-create/formulario-create.component';
 
 const routes: Routes = [
 
@@ -49,6 +50,11 @@ const routes: Routes = [
   {
     path: 'formulario/antecendentes/create',
     component: FormularioCreateComponent
+  },
+
+  {
+    path: 'formulario/vacuna/create',
+    component: FormularioCreateComponentVacuna
   }
 
 
