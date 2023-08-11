@@ -9,63 +9,222 @@
 
     <div class="mt-5 px-5 py-5 mx-5 shadow-lg bg-white bg-opacity-10 rounded-xl">
 
-      <form [formGroup]="formRegister" (submit)="Register(formRegister.value)" class="flex-grow items-center font-medium text-base">
+      <form [formGroup]="formRegister" (submit)="register(formRegister.value)" class="flex-grow items-center font-medium text-base">
 
         <p class="font-semibold text-2xl">Registrarse</p>
 
-        
+        <!-- Input de Nombre -->
         <div class="relative mt-5 flex items-center rounded-lg border-2 border-solid border-gray-600 hover:border-[#28A061] transition-all duration-500">
-          <ion-icon class="absolute flex pl-3 text-gray-600 w-5 h-5" name="mail-outline"></ion-icon>
-          <input type="email" autofocus formControlName="email"
-                placeholder="Ingrese correo" 
+          <ion-icon class="absolute flex pl-3 text-gray-600 w-5 h-5" name="person-outline"></ion-icon>
+          <input type="email" autofocus formControlName="nombre"
+                placeholder="Nombre" 
                 class="out-input py-2.5 w-full outline-none placeholder:text-slate-200 placeholder:font-medium placeholder:text-base bg-transparent pl-10">
         </div>
 
-        <div class="mt-1" *ngIf="formRegister.get('email')?.invalid && formRegister.get('email')?.touched">
-          <span class="text-red-700" *ngIf="formRegister.get('email')?.hasError('required')"> 
-            Correo requerido
+        <!-- Validación de input de nombre en caso sea requerido -->
+
+        <div class="mt-1" *ngIf="formRegister.get('nombre')?.invalid && formRegister.get('nombre')?.touched">
+          <span class="text-red-700" *ngIf="formRegister.get('nombre')?.hasError('required')"> 
+            Campo Requerido
           </span>
         </div>
 
-        <div class="text-red-700 mt-1" *ngIf="formRegister.get('email')?.hasError('email')">
-            Correo invalido
+
+        <!-- Validación de input de nombre en caso este sea menor o igual que 3 -->
+
+        <div class="mt-1 text-red-700" *ngIf="formRegister.get('nombre')?.hasError('minlength')">
+          3 Caracteres Mínimo
         </div>
+
+
+        <!-- Input de Apellido -->
+
+        <div class="relative mt-5 flex items-center rounded-lg border-2 border-solid border-gray-600 hover:border-[#28A061] transition-all duration-500">
+          <ion-icon class="absolute flex pl-3 text-gray-600 w-5 h-5" name="person-outline"></ion-icon>
+          <input type="text" formControlName="apellido"
+                placeholder="Apellido" 
+                class="out-input py-2.5 w-full outline-none placeholder:text-slate-200 placeholder:font-medium placeholder:text-base bg-transparent pl-10">
+        </div>
+
+        <!-- Validación de input de apellido en caso sea requerido -->
+
+        <div class="mt-1" *ngIf="formRegister.get('apellido')?.invalid && formRegister.get('apellido')?.touched">
+          <span class="text-red-700" *ngIf="formRegister.get('apellido')?.hasError('required')"> 
+            Campo Requerido
+          </span>
+        </div>
+
+
+        <!-- Validación de input de apellido en caso este sea menor o igual que 3 -->
+
+        <div class="mt-1 text-red-700" *ngIf="formRegister.get('apellido')?.hasError('minlength')">
+          3 Caracteres Mínimo
+        </div>
+
+        <!-- Input de email  -->
+        
+      
+        <div class="relative mt-5 flex items-center rounded-lg border-2 border-solid border-gray-600 hover:border-[#28A061] transition-all duration-500">
+          <ion-icon class="absolute flex pl-3 text-gray-600 w-5 h-5" name="mail-outline"></ion-icon>
+          <input type="email" autofocus placeholder="Correo Electrónico" formControlName="email"
+            class="out-input py-2.5 w-full outline-none placeholder:text-slate-200 placeholder:font-medium placeholder:text-base bg-transparent pl-10">
+        </div>
+
+        <!-- Validación de email en caso sea requerido -->
+        <div class="mt-1" *ngIf="formRegister.get('email')?.invalid && formRegister.get('email')?.touched">
+          <span class="text-red-700" *ngIf="formRegister.get('email')?.hasError('required')"> 
+            Campo Requerido
+          </span>
+        </div>
+
+
+        <!-- Validación en caso sea incorrecto el formato de correo electrónico -->
+        <div class="text-red-700 mt-1" *ngIf="formRegister.get('email')?.hasError('email')">
+            Correo Inválido
+        </div>
+
+
+        <!-- Input de password -->
 
         <div class="relative mt-5 flex items-center rounded-lg border-2 border-solid border-gray-600 hover:border-[#28A061] transition-all duration-500">
           <ion-icon class="absolute flex pl-3 text-gray-600 w-5 h-5" name="lock-closed-outline"></ion-icon>
           <input type="password" formControlName="password"
-                placeholder="Ingrese contraseña"
+                placeholder="Contraseña"
               class="out-input py-2.5 w-full outline-none placeholder:text-slate-200 placeholder:font-medium placeholder:text-base bg-transparent pl-10">
         </div>
 
+        <!-- Validación en caso deje vacío el campo -->
+
         <div class="mt-1" *ngIf="formRegister.get('password')?.invalid && formRegister.get('password')?.touched">
           <span *ngIf="formRegister.get('password')?.hasError('required')" class="text-red-700"> 
-            Contraseña requerida
+            Campo Requerido
           </span>
         </div>
 
+        <!-- Validación de 5 caracteres como mínimo -->
+
         <div class="mt-1 text-red-700" *ngIf="formRegister.get('password')?.hasError('minlength')">
-          5 caracteres mínimo
+          5 Caracteres Mínimo
         </div>
 
-        <label for="remember" class="flex items-center gap-x-1.5 mt-5">
-          <input type="checkbox" id="remember" class="w-5 h-5 rounded-md border-gray-600 border-solid focus:bg-indigo-600 bg-gray-300">
-          Mantener Sesión
-        </label>
+        <!-- Input de telefóno -->
+
+        <div class="relative mt-5 flex items-center rounded-lg border-2 border-solid border-gray-600 hover:border-[#28A061] transition-all duration-500">
+          <ion-icon class="absolute flex pl-3 text-gray-600 w-5 h-5" name="call-outline"></ion-icon>
+          <input type="text" formControlName="telefono"
+                placeholder="Telefóno"
+              class="out-input py-2.5 w-full outline-none placeholder:text-slate-200 placeholder:font-medium placeholder:text-base bg-transparent pl-10">
+        </div>
+
+        <div class="mt-1" *ngIf="formRegister.get('telefono')?.invalid && formRegister.get('telefono')?.touched">
+          <span *ngIf="formRegister.get('telefono')?.hasError('required')" class="text-red-700"> 
+            Campo Requerido
+          </span>
+        </div>
+
+        <!-- Validación en caso se ingrese caracteres letras o otro caracter raro/ en caso sea menor que 10 -->
+
+        <div class="mt-1 text-red-700" *ngIf="formRegister.get('telefono')?.hasError('pattern')">
+          <ion-label class="telefono_label" color="primary">Telefóno Requiere : <br> 10 Caracteres Númericos <br> Soló se Permite Números</ion-label>
+        </div>
+
+
+        <!-- Input de fecha -->
+
+        <div class="relative mt-5 flex items-center rounded-lg border-2 border-solid border-gray-600 hover:border-[#28A061] transition-all duration-500">
+          <input type="date" formControlName="fecha"
+            class="out-input py-2.5 w-full outline-none placeholder:text-slate-200 placeholder:font-medium placeholder:text-base bg-transparent pl-10">
+        </div>
+
+        <!-- Validación de fecha -->
+        <div class="mt-1" *ngIf="formRegister.get('fecha')?.invalid && formRegister.get('fecha')?.touched">
+          <span *ngIf="formRegister.get('fecha')?.hasError('required')" class="text-red-700"> 
+            Campo Requerido
+          </span>
+        </div>
+
+                <!-- Validación en caso se ingrese caracteres letras o otro caracter raro/ en caso sea menor que 10 o mayor que 10 -->
+
+                <div class="mt-1 text-red-700" *ngIf="formRegister.get('telefono')?.hasError('pattern')">
+                  <ion-label class="validacion-text" color="primary">Telefóno Requiere : <br> 10 Caracteres Númericos <br> Soló se Permite Números</ion-label>
+                </div>
+        
+        
+                <!-- Input de cedula -->
+        
+                <div class="relative mt-5 flex items-center rounded-lg border-2 border-solid border-gray-600 hover:border-[#28A061] transition-all duration-500">
+                  <ion-icon class="absolute flex pl-3 text-gray-600 w-5 h-5" name="finger-print-outline"></ion-icon>
+                  <input type="text" placeholder="Cedula" formControlName="ci"
+                    class="out-input py-2.5 w-full outline-none placeholder:text-slate-200 placeholder:font-medium placeholder:text-base bg-transparent pl-10">
+                </div>
+        
+                <!-- Validación de cedula en caso que el campo sea vacío -->
+                <div class="mt-1" *ngIf="formRegister.get('ci')?.invalid && formRegister.get('ci')?.touched">
+                  <span *ngIf="formRegister.get('ci')?.hasError('required')" class="text-red-700"> 
+                    Campo Requerido
+                  </span>
+                </div>
+
+                <!-- Validación en caso se ingrese caracteres letras o otro caracter raro/ en caso sea menor que 10 -->
+
+                <div class="mt-1 text-red-700" *ngIf="formRegister.get('ci')?.hasError('pattern')">
+                <ion-label class="validacion-text" color="primary">Cédula Incorrecta</ion-label>
+                </div>
+
+                <!-- Input de Provincia por el momento recorro las provincias en un array -->
+
+                <div class="relative mt-5 flex items-center rounded-lg border-2 border-solid border-gray-600 hover:border-[#28A061] transition-all duration-500">
+                  <ion-icon class="absolute flex pl-3 text-gray-600 w-5 h-5" name="accessibility-outline"></ion-icon>
+                  <ion-select  class="out-input py-2.5 w-full outline-none placeholder:text-slate-200 placeholder:font-medium placeholder:text-base bg-transparent pl-10" formControlName="provincia" label="Provincia" label-placement="floating" fill="outline">
+                    <ion-select-option  *ngFor="let provincia of provincias_array;let i = index" value="{{provincia}}">{{provincia}}</ion-select-option>
+                  </ion-select>
+                </div>
+
+                 <!-- Validación de input de provincia en caso sea requerido -->
+
+                  <div class="mt-1" *ngIf="formRegister.get('provincia')?.invalid && formRegister.get('provincia')?.touched">
+                <span class="text-red-700" *ngIf="formRegister.get('provincia')?.hasError('required')"> 
+                  Campo Requerido
+                </span>
+                  </div>
+
+
+                <!-- Validación de input de provincia en caso este sea menor o igual que 3 -->
+
+                <div class="mt-1 text-red-700" *ngIf="formRegister.get('canton')?.hasError('minlength')">
+                    3 Caracteres Mínimo
+                </div>
+
+               <!-- Input de Cantones por el momento recorro las cantones en un array -->
+
+               <div class="relative mt-5 flex items-center rounded-lg border-2 border-solid border-gray-600 hover:border-[#28A061] transition-all duration-500">
+                <ion-icon class="absolute flex pl-3 text-gray-600 w-5 h-5" name="home-outline"></ion-icon>
+                <ion-select  class="out-input py-2.5 w-full outline-none placeholder:text-slate-200 placeholder:font-medium placeholder:text-base bg-transparent pl-10" formControlName="canton" label="Cantón" label-placement="floating" fill="outline">
+                  <ion-select-option  *ngFor="let canton of cantonArray;let i = index" value="{{canton}}">{{canton}}</ion-select-option>
+                </ion-select>
+              </div>
+
+                <!-- Validación de input de canton en caso sea requerido -->
+
+                <div class="mt-1" *ngIf="formRegister.get('canton')?.invalid && formRegister.get('canton')?.touched">
+              <span class="text-red-700" *ngIf="formRegister.get('canton')?.hasError('required')"> 
+                Campo Requerido
+              </span>
+                </div>
+
+
+              <!-- Validación de input de canton en caso este sea menor o igual que 3 -->
+
+              <div class="mt-1 text-red-700" *ngIf="formRegister.get('canton')?.hasError('minlength')">
+                  3 Caracteres Mínimo
+              </div>
     
-        <button type="submit" class="py-2.5 w-full mt-5 text-base font-semibold rounded-lg bg-[#28A061] hover:bg-green-700 transition-all duration-700">
+        <button  type="submit" class="py-2.5 w-full mt-5 text-base font-semibold rounded-lg bg-[#28A061]  hover:bg-green-700 transition-all duration-700">
           Registrarse
         </button>
       </form>
-
-      <div class="flex items-center justify-center w-full gap-x-1.5 text-center mt-5 rounded-lg bg-gray-600 transition-all duration-700 hover:bg-gray-700 text-white">
-        <img class="w-5 h-5" src="../../../assets/svg/google-icon.svg" alt="google">
-        <button type="submit" class="py-2.5 text-base font-semibold">
-          Google
-        </button>
-      </div>
      
-      <button [routerLink]="['/login']" routerLinkActive="router-link-active"  type="button" class="text-center w-full mt-5">
+      <button [routerLink]="['/login']" routerLinkActive="router-link-active"  type="submit" class="text-center w-full mt-5">
         Ya tienes cuenta
       </button>
     </div>
