@@ -11,10 +11,10 @@ export class FormularioCreateComponentVacuna  implements OnInit {
   FormVacuna!:FormGroup;
 
 
-  constructor(private formBuilder:FormBuilder) { 
+  constructor(private formBuilder:FormBuilder) {
     this.FormVacuna = this.formBuilder.group({
       nombre : new FormControl('',[Validators.required,Validators.minLength(3)]),
-      fecha : new FormControl('',Validators.required) 
+      fecha : new FormControl('',Validators.required)
     });
   }
 

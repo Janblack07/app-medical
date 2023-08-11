@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './formulario-create.component.html',
   styleUrls: ['./formulario-create.component.scss'],
 })
-export class FormularioCreateComponent  implements OnInit {
+export class FormularioCreateExamenesMedicosComponent  implements OnInit {
 
   constructor() { }
 

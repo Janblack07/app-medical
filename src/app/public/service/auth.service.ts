@@ -1,13 +1,14 @@
-import { Injectable } from '@angular/core'; 
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { config } from 'src/config/config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private readonly api ='http://127.0.0.1:8000/api/'
+  private readonly api =config.apiUrl
   constructor(private readonly http:HttpClient) { }
 
   //metodos consumo de api

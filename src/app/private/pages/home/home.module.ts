@@ -8,7 +8,6 @@ import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { PrivateModule } from 'src/app/private/private.module';
 
 @NgModule({
   imports: [
@@ -16,7 +15,7 @@ import { PrivateModule } from 'src/app/private/private.module';
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
-    SharedModule,
+    SharedModule
   ],
   declarations: [HomePage]
 })

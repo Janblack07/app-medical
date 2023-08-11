@@ -6,7 +6,7 @@ import { FormGroup,FormControl, Validators, FormBuilder } from '@angular/forms';
   templateUrl: './formulario-create.component.html',
   styleUrls: ['./formulario-create.component.scss'],
 })
-export class FormularioCreateComponent  implements OnInit {
+export class FormularioCreateAntecedenteComponent  implements OnInit {
 
   FormAntecentesMedicos!:FormGroup;
 

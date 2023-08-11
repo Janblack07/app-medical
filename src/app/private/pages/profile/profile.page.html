@@ -1,6 +1,8 @@
 <ion-content [fullscreen]="true">
+  <app-progress/>
   <app-navbar-component />
   <app-profile-component />
+
   <app-change-password-component />
 
   <div class="flex flex-col px-5 pb-10 font-sans">
@@ -46,8 +48,19 @@
           <p class="mt-2 text-base font-normal text-gray-700">10/5/2023 <span>Inactiva</span></p>
         </div>
       </div>
+      <div class="flex items-center rounded-lg bg-black bg-opacity-10 p-2.5 shadow-lg">
+        <div class="flex h-12 w-12 items-center justify-center rounded-full border border-blue-100 bg-blue-50">
+          <ion-icon class="w-7 h-7 text-orange-400" name="trophy-outline"></ion-icon>
+        </div>
 
+        <div class="ml-4">
+          <h4 class="font-semibold"><span>2</span> Titulos</h4>
+          <p class="mt-2 text-base font-normal text-gray-700">Nombre titulos</p>
+        </div>
+      </div>
 
     </div>
+
+
   </div>
 </ion-content>

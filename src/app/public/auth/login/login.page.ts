@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/public/service/auth.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class LoginPage implements OnInit {
   formLogin!:FormGroup
 
   constructor(private router: Router, private authService: AuthService,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,private notificacion:ToastrService) {
       this.formLogin= this.formBuilder.group({
         email:['',[Validators.required,Validators.email]],
         password:['',[Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
@@ -33,10 +34,11 @@ export class LoginPage implements OnInit {
     } else {
       this.authService.Login(form).subscribe((data) => {
         this.authService.setToken(data.access_token);
-        this.router.navigate(['patient/home']);
+        this.notificacion.success("Inicio de sesión exitoso",'Proceso Exitoso');
+        this.router.navigate(['home']);
       });
     }
   }
-  
+
 
 }
