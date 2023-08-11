@@ -19,7 +19,6 @@ export class FormularioCreateComponentVacuna  implements OnInit {
   }
 
 
-
   ngOnInit() {}
 
   // Aquí iria para llamar al servicio y crear una vacuna

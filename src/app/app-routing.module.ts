@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { FormularioCreateComponent } from './private/components/antecendetes/formulario-create/formulario-create.component';
 import { FormularioCreateComponentVacuna } from './private/components/vacuna/formulario-create/formulario-create.component';
-
+import { FormularioCreateComponentExamenes } from './private/components/examenes-medicos/formulario-create/formulario-create.component';
+import { FormularioCreateComponentMedicamentos } from './private/components/medicamentos/formulario-create/formulario-create.component';
 const routes: Routes = [
 
   {
@@ -55,7 +56,16 @@ const routes: Routes = [
   {
     path: 'formulario/vacuna/create',
     component: FormularioCreateComponentVacuna
+  },
+  {
+    path: 'formulario/examenes/create',
+    component: FormularioCreateComponentExamenes
+  },
+  {
+    path: 'formulario/medicamentos/create',
+    component: FormularioCreateComponentMedicamentos
   }
+
 
 
 ];
