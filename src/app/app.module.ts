@@ -7,6 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { FormularioCreateComponent } from './private/components/antecendetes/formulario-create/formulario-create.component';
+
 
 @NgModule({
   declarations: [AppComponent],

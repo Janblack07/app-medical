@@ -1,0 +1,114 @@
+<ion-content fullscreen="true">
+  <section class="bg-gray-50 dark:bg-gray-900">
+    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+        <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+            <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                <form [formGroup]="FormAntecentesMedicos" (submit)="CreateAntecentesMedicos(FormAntecentesMedicos.value)" class="space-y-4 md:space-y-6" action="#">
+
+                  <!-- Input de condición medica -->
+                    <label for="condicion_medica" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Condición Medica</label>
+                    <input formControlName="condicion_medica" type="text" name="condicion_medica" id="condicion_medica" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ingrese una Condición Médica" required="">
+
+                    <!-- Validación de condición medica -->
+
+                    <div class="mt-1" *ngIf="FormAntecentesMedicos.get('condicion_medica')?.invalid && FormAntecentesMedicos.get('condicion_medica')?.touched">
+                      <span class="text-red-700" *ngIf="FormAntecentesMedicos.get('condicion_medica')?.hasError('required')"> 
+                        Campo Obligatorio
+                      </span>
+                    </div>
+
+                    <!-- Validación en caso sea menor que 3-->
+
+                    <div class="mt-1 text-red-700" *ngIf="FormAntecentesMedicos.get('condicion_medica')?.hasError('minlength')">
+                      3 Caracteres Mínimo
+                    </div>
+                  
+                    <!-- Input y Ion toggle en caso que el paciente tenga alergia o no -->
+
+                        <label for="alergia" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Posee Usted una Alergia?</label>
+                        <ion-toggle [checked]="false" (click)="ChangeChecked()" aria-label="Enable Notifications"></ion-toggle>
+
+                        <div *ngIf="Checked">
+                          <ion-label>Indique el Tipo de Alergia</ion-label> 
+                          <input  formControlName="alergia"  type="text" name="alergia" id="alergia" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required=""> 
+                        </div>
+                    <!-- Validación para el campo de alergia -->
+
+                    <div class="mt-1" *ngIf="FormAntecentesMedicos.get('alergia')?.invalid && FormAntecentesMedicos.get('alergia')?.touched">
+                      <span class="text-red-700" *ngIf="FormAntecentesMedicos.get('alergia')?.hasError('required')"> 
+                        Campo Obligatorio
+                      </span>
+                    </div>
+
+                    <!-- Input de cirujias previas (En caso de no tener se deja en blanco el campo, pero se pasa un valor por defecto) -->
+
+                      <label for="cirujia_previa" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Posee una Cirujia Previa?</label>
+                      <ion-toggle [checked]="false" (click)="ChangeChecked2()" aria-label="Enable Notifications"></ion-toggle>
+                      <div *ngIf="Checked2">
+                        <ion-label>Ingrese la Cirujía Previa</ion-label> 
+                        <input  formControlName="cirujia_previa"  type="text" name="alergia" id="alergia" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required=""> 
+                      </div>
+
+                    <!-- Validación para el campo de cirujia previa -->
+
+                    <div class="mt-1" *ngIf="FormAntecentesMedicos.get('cirujia_previa')?.invalid && FormAntecentesMedicos.get('cirujia_previa')?.touched">
+                      <span class="text-red-700" *ngIf="FormAntecentesMedicos.get('cirujia_previa')?.hasError('required')"> 
+                        Campo Obligatorio
+                      </span>
+                    </div>
+
+
+                    <!-- Seleccionar un tipo de sangre -->
+                    <ion-select formControlName="tipo_sangre" label="Tipo de Sangre" label-placement="floating" fill="solid">
+                      <ion-select-option value="a+">A+</ion-select-option>
+                      <ion-select-option value="o+">O+</ion-select-option>
+                      <ion-select-option value="b+">B+</ion-select-option>
+                      <ion-select-option value="ab+">AB+</ion-select-option>
+                      <ion-select-option value="a-">A-</ion-select-option>
+                      <ion-select-option value="o-">O-</ion-select-option>
+                      <ion-select-option value="b-">B-</ion-select-option>
+                      <ion-select-option value="ab-">AB-</ion-select-option>
+                    </ion-select>
+
+
+                    
+                    <!-- Validación para el campo de tipo de sangre -->
+
+                    <div class="mt-1" *ngIf="FormAntecentesMedicos.get('tipo_sangre')?.invalid && FormAntecentesMedicos.get('tipo_sangre')?.touched">
+                      <span class="text-red-700" *ngIf="FormAntecentesMedicos.get('tipo_sangre')?.hasError('required')"> 
+                        Campo Obligatorio
+                      </span>
+                    </div>
+                    
+
+                      <!-- Textarea para otros datos -->
+                      <label for="cirujia_previa" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Posee un Dato Adicional?</label>
+                      <ion-toggle [checked]="false" (click)="ChangeChecked3()" aria-label="Enable Notifications"></ion-toggle>
+
+                      <div *ngIf="Checked3">
+                        <ion-label>Ingrese un Dato Adicional</ion-label>
+                        <ion-textarea
+                        formControlName="otro_datos"
+                        placeholder=""
+                        [clearOnEdit]="true"
+                        id="otro_datos"
+                      ></ion-textarea>
+                      </div>
+
+                      
+                    <!-- Validación para el campo de cirujia previa -->
+
+                    <div class="mt-1" *ngIf="FormAntecentesMedicos.get('otro_datos')?.invalid && FormAntecentesMedicos.get('otro_datos')?.touched">
+                      <span class="text-red-700" *ngIf="FormAntecentesMedicos.get('otro_datos')?.hasError('required')"> 
+                        Campo Obligatorio
+                      </span>
+                    </div>
+
+                      <!-- Button para registrar antecente -->
+                      <button [disabled]="FormAntecentesMedicos.invalid" type="submit" class="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Registrar Antecente Médicos</button>
+                </form>
+            </div>
+        </div>
+    </div>
+  </section>
+</ion-content>

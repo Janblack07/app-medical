@@ -9,6 +9,7 @@ import { HomeComponent } from '../private/components/home/home.component';
 import { NavbarComponent } from '../private/components/navbar/navbar.component';
 import { ChangePasswordComponent } from '../private/components/change-password/change-password.component';
 import { SidebarComponent } from '../private/components/sidebar/sidebar.component';
+import { FormularioCreateComponent } from '../private/components/antecendetes/formulario-create/formulario-create.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { SidebarComponent } from '../private/components/sidebar/sidebar.componen
     HomeComponent,
     NavbarComponent,
     ChangePasswordComponent,
-    SidebarComponent
+    SidebarComponent,
+    FormularioCreateComponent
   ],
 
   declarations: [
@@ -32,7 +34,8 @@ import { SidebarComponent } from '../private/components/sidebar/sidebar.componen
     HomeComponent,
     NavbarComponent,
     ChangePasswordComponent,
-    SidebarComponent
+    SidebarComponent,
+    FormularioCreateComponent
   ],
 
 })

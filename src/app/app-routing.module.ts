@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { FormularioCreateComponent } from './private/components/antecendetes/formulario-create/formulario-create.component';
 
 const routes: Routes = [
 
@@ -42,7 +43,13 @@ const routes: Routes = [
     loadChildren: () => import('./private/pages/doctor/profile/profile.module').then( m => m.ProfilePageModule)
   },
 
- 
+
+  // Esto es por el momento solo para visualizar los componentes
+
+  {
+    path: 'formulario/antecendentes/create',
+    component: FormularioCreateComponent
+  }
 
 
 ];
