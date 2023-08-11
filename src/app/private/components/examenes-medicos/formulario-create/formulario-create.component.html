@@ -1,3 +1,75 @@
-<p>
-  formulario-create works!
-</p>
+<ion-content fullscreen="true">
+    <section class="bg-gray-50 dark:bg-gray-900">
+        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+            <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+                <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                    <form [formGroup]="FormExamenes" (submit)="CreateExamenesMedicos(FormExamenes.value)" class="space-y-4 md:space-y-6" action="#">
+
+                        <!-- Input de Nombre -->
+                        <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
+                        <input formControlName="nombre" type="text" name="nombre" id="condicion_medica" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Ingrese nombre" required="">
+
+                        <!-- Validación de examen medico -->
+
+                        <div class="mt-1" *ngIf="FormExamenes.get('nombre')?.invalid && FormExamenes.get('nombre')?.touched">
+                            <span class="text-red-700" *ngIf="FormExamenes.get('nombre')?.hasError('required')"> 
+                        Campo Obligatorio
+                      </span>
+                        </div>
+
+                        <!-- Validación en caso sea menor que 3-->
+
+                        <div class="mt-1 text-red-700" *ngIf="FormExamenes.get('nombre')?.hasError('minlength')">
+                            3 Caracteres Mínimo
+                        </div>
+
+                        <!-- Input para la fecha -->
+                        <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha</label>
+                        <ion-datetime formControlName="fecha" presentation="date"></ion-datetime>
+
+
+                        <!-- Seleccionar resultado de examen -->
+                        <ion-select formControlName="resultado" label="Resultado de examen" label-placement="floating" fill="solid">
+                            <ion-select-option value="Positivo">Positivo</ion-select-option>
+                            <ion-select-option value="Negativo">Negativo</ion-select-option>
+
+                        </ion-select>
+
+
+
+                        <!-- Validación para el campo de resultado de examen -->
+
+                        <div class="mt-1" *ngIf="FormExamenes.get('resultado')?.invalid && FormExamenes.get('resultado')?.touched">
+                            <span class="text-red-700" *ngIf="FormExamenes.get('resultado')?.hasError('required')"> Campo Obligatorio</span>
+                        </div>
+
+
+                        <!-- Input de Id paciente -->
+                        <label for="id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Id del paciente</label>
+                        <input formControlName="id" type="text" name="id" id="condicion_medica" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Ingrese id" required="">
+
+                        <!-- Validación de Id paciente -->
+
+                        <div class="mt-1" *ngIf="FormExamenes.get('id')?.invalid && FormExamenes.get('id')?.touched">
+                            <span class="text-red-700" *ngIf="FormExamenes.get('id')?.hasError('required')"> 
+                         Campo Obligatorio
+                       </span>
+                        </div>
+
+                        <!-- Validación en caso sea menor que 1-->
+
+                        <div class="mt-1 text-red-700" *ngIf="FormExamenes.get('id')?.hasError('minlength')">
+                            1 Caracter Mínimo
+                        </div>
+
+
+                        <!-- Button para registrar examen -->
+                        <button [disabled]="FormExamenes.invalid" type="submit" class="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Registrar Examen</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</ion-content>
